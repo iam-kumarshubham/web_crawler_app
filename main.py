@@ -2,8 +2,7 @@ from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from typing import List, Optional
-import asyncio
-from crawler import WebCrawler
+from services.crawler_service import CrawlerService
 
 app = FastAPI(title="E-commerce URL Crawler")
 
@@ -29,16 +28,15 @@ class CrawlResponse(BaseModel):
 @app.post("/crawl", response_model=List[CrawlResponse])
 async def crawl_websites(request: CrawlRequest):
     try:
-        crawler = WebCrawler(
+        service = CrawlerService(
             max_pages=request.max_pages,
             max_depth=request.max_depth
         )
-        
-        results = await crawler.crawl_domains(request.domains)
+        results = await service.crawl_domains(request.domains)
         return results
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
 @app.get("/health")
 async def health_check():
-    return {"status": "healthy"} 
+    return {"status": "healthy"}

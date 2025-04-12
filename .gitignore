@@ -46,3 +46,13 @@ htmlcov/
 *.bak
 *.swp
 *.swo
+
+# Rust build artifacts (if applicable)
+target/
+Cargo.lock
+Cargo.toml
+
+# Virtual environment
+venv/
+env/
+.venv/
