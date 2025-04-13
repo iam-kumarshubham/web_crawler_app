@@ -10,6 +10,12 @@ A FastAPI-based web crawler that discovers product URLs across multiple e-commer
 - Asynchronous processing for better performance
 - Robust error handling
 
+## Live Deployment
+
+The crawler API is deployed and accessible here:
+
+**URL:** [https://webcrawlerapp-production.up.railway.app](https://webcrawlerapp-production.up.railway.app)
+
 ## Setup
 
 1. Create a virtual environment:
