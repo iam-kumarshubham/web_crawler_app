@@ -25,6 +25,10 @@ class CrawlResponse(BaseModel):
     product_urls: List[str]
     status: str
 
+@app.get("/")
+async def root():
+    return {"message": "E-commerce crawler API is up and running!"}
+
 @app.post("/crawl", response_model=List[CrawlResponse])
 async def crawl_websites(request: CrawlRequest):
     try:
